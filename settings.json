@@ -1,0 +1,71 @@
+{
+  "_setup_notes": [
+    "BEFORE USING: Replace YOUR_USERNAME with your actual system username in all paths below.",
+    "Mac/Linux users: replace C:/Users/YOUR_USERNAME with /Users/YOUR_USERNAME or use ~ where supported.",
+    "Windows users: replace YOUR_USERNAME with your Windows login name (e.g. casey.kaut or hank.williams).",
+    "After editing, copy this file to: ~/.claude/settings.json (Mac/Linux) or %USERPROFILE%\\.claude\\settings.json (Windows)"
+  ],
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "enabledPlugins": {
+    "code-simplifier@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": \"Mountain Lodge Telluride — Claude session started. Property profile and org standards loaded.\"}}' ",
+            "statusMessage": "Loading property profile...",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"WORKFLOW REMINDER: For any request to build, implement, create, add, or develop a feature — always follow this sequence: (1) /superpowers:brainstorm to clarify requirements, (2) /superpowers:write-plan to produce an implementation plan, (3) /superpowers:execute-plan to build it using sub-agents. After code is written, run /simplify to clean it up.\"}}'",
+            "statusMessage": "Loading workflow reminders..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"PostToolUse\", \"additionalContext\": \"A file was just written or edited. Before finishing this task, run /simplify on the changed file to review it for quality, duplication, and efficiency.\"}}'",
+            "statusMessage": "Queuing simplify reminder..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/gemini-fallback.sh",
+            "statusMessage": "Checking for repeated errors...",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
