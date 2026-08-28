@@ -3,7 +3,8 @@
     "BEFORE USING: Replace YOUR_USERNAME with your actual system username in all paths below.",
     "Mac/Linux users: replace C:/Users/YOUR_USERNAME with /Users/YOUR_USERNAME or use ~ where supported.",
     "Windows users: replace YOUR_USERNAME with your Windows login name (e.g. casey.kaut or hank.williams).",
-    "After editing, copy this file to: ~/.claude/settings.json (Mac/Linux) or %USERPROFILE%\\.claude\\settings.json (Windows)"
+    "After editing, copy this file to: ~/.claude/settings.json (Mac/Linux) or %USERPROFILE%\\.claude\\settings.json (Windows)",
+    "Also copy hooks/gemini-fallback.sh to ~/.claude/hooks/ — the PostToolUse Bash hook below depends on it."
   ],
   "permissions": {
     "defaultMode": "auto"

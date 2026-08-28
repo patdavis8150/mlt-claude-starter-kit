@@ -13,6 +13,7 @@ Contact: patrick.davis@manorvail.com
 | `settings.json` | Hooks + plugin config — workflow discipline, caveman mode, quality checks |
 | `property-profile.md` | Your property memory file — Claude loads this every session |
 | `agents/`, `skills/` | Fresh Eyes Reviewer, Opus Advisor, Stuck Protocol, Standing Goals, Graph Engineering — see Step 6 |
+| `hooks/` | `gemini-fallback.sh` — required by the PostToolUse hook in `settings.json` |
 | `README.md` | This file |
 
 ---
@@ -62,6 +63,16 @@ cp settings.json "$env:USERPROFILE\.claude\settings.json"
 
 **Before you do this:** Open `settings.json` and update any file paths that reference a username.  
 Search for `YOUR_USERNAME` and replace with your Windows/Mac username.
+
+Also copy the hook script it depends on:
+
+```bash
+# Mac/Linux
+cp hooks/gemini-fallback.sh ~/.claude/hooks/
+
+# Windows (PowerShell)
+cp hooks\gemini-fallback.sh "$env:USERPROFILE\.claude\hooks\"
+```
 
 ---
 
