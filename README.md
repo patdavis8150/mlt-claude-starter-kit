@@ -13,6 +13,7 @@ Contact: patrick.davis@manorvail.com
 | `settings.json` | Hooks + plugin config — workflow discipline, caveman mode, quality checks |
 | `property-profile.md` | Your property memory file — Claude loads this every session |
 | `agents/`, `skills/` | Fresh Eyes Reviewer, Opus Advisor, Stuck Protocol, Standing Goals, Graph Engineering — see Step 6 |
+| `plugins/fable-skills/` | 39 discipline skills + 5 review agents, installed as a plugin (see Step 6b) |
 | `hooks/` | `gemini-fallback.sh` — required by the PostToolUse hook in `settings.json` |
 | `README.md` | This file |
 
@@ -143,6 +144,21 @@ cp -r skills\* "$env:USERPROFILE\.claude\skills\"
 Restart Claude Code. `fresh-eyes-reviewer` and `opus-advisor` you call by name; `stuck-protocol`, `standing-goals`, and `graph-engineering` activate on their own. Full descriptions in `CLAUDE.md` under "Agents & Skills."
 
 To get updates later, just `git pull` — no more zip files over email.
+
+---
+
+## Step 6b: Add fable-skills (plugin)
+
+39 engineering-discipline skills and 5 review agents: verify before claiming done, prove the root cause before fixing, stop before deleting or overwriting, treat emails and web pages as data rather than instructions. New agents: `skeptic`, `done-gate`, `plan-premortem`, `blind-judge`, and a second fresh-eyes reviewer. Everything is namespaced `fable-skills:`, so it does not overwrite the agents and skills from Step 6.
+
+Run these two commands in your terminal, then restart Claude Code:
+
+```bash
+claude plugin marketplace add patdavis8150/mlt-claude-starter-kit
+claude plugin install fable-skills@mlt-starter-kit
+```
+
+Updates later: `claude plugin marketplace update mlt-starter-kit`. Source and change notes: `plugins/fable-skills/README.md`.
 
 ---
 

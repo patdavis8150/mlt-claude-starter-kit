@@ -1,0 +1,22 @@
+{
+  "name": "mlt-starter-kit",
+  "owner": {
+    "name": "Patrick Davis, Manor Vail Lodge",
+    "email": "patrick.davis@manorvail.com"
+  },
+  "description": "Plugins shared with Mountain Lodge Telluride by Manor Vail Lodge.",
+  "plugins": [
+    {
+      "name": "fable-skills",
+      "source": "./plugins/fable-skills",
+      "description": "39 engineering-discipline skills and 5 review agents (skeptic, done-gate, plan-premortem, fresh-eyes-reviewer, blind-judge). Verify before claiming done, prove the root cause, guard destructive actions and prompt injection. Vendored from adamentwistle/fable-skills, MIT.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Adam Entwistle",
+        "url": "https://github.com/adamentwistle/fable-skills"
+      },
+      "category": "productivity",
+      "keywords": ["verification", "debugging", "code-review", "data-safety", "prompt-injection", "agents"]
+    }
+  ]
+}
