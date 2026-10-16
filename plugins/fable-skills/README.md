@@ -7,7 +7,7 @@ Skills load on demand when a task matches their description. Everything is names
 ## What's included
 
 - **39 skills** in `skills/`: verification and honest reporting, root-cause debugging, data-loss guard, untrusted-content guard (prompt injection), edge-case sweep, escalate-vs-decide, git hygiene, test design, security reflexes, and more.
-- **5 agents** in `agents/`: `skeptic` (tries to refute a claim), `done-gate` (checks work against the original request), `plan-premortem` (critiques a plan before it runs), `fresh-eyes-reviewer` (zero-context code review), `blind-judge` (grades candidates with provenance stripped). All five run on Opus.
+- **5 agents** in `agents/`: `skeptic` (tries to refute a claim), `done-gate` (checks work against the original request), `plan-premortem` (critiques a plan before it runs), `fresh-eyes-reviewer` (zero-context code review), `blind-judge` (grades candidates with provenance stripped). Four run on Opus; `done-gate` runs on Sonnet.
 
 ## What's left out
 
