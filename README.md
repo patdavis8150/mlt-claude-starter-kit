@@ -15,6 +15,7 @@ Contact: patrick.davis@manorvail.com
 | `agents/`, `skills/` | Fresh Eyes Reviewer, Opus Advisor, Stuck Protocol, Standing Goals, Graph Engineering — see Step 6 |
 | `plugins/fable-skills/` | 39 discipline skills + 5 review agents, installed as a plugin (see Step 6b) |
 | `hooks/` | `gemini-fallback.sh` — required by the PostToolUse hook in `settings.json` |
+| `commands/` | `/save`, `/resume`, `/memorize` — session memory, free, no Obsidian needed (see Step 6c) |
 | `README.md` | This file |
 
 ---
@@ -159,6 +160,29 @@ claude plugin install fable-skills@mlt-starter-kit
 ```
 
 Updates later: `claude plugin marketplace update mlt-starter-kit`. Source and change notes: `plugins/fable-skills/README.md`.
+
+---
+
+## Step 6c: Add session memory commands (free)
+
+Three commands so Claude picks up where you left off, with no extra apps or cost. They read and write the memory folder from Step 5.
+
+```bash
+# Mac/Linux
+mkdir -p ~/.claude/commands ~/.claude/memory/sessions
+cp commands/*.md ~/.claude/commands/
+
+# Windows (PowerShell)
+mkdir "$env:USERPROFILE\.claude\commands", "$env:USERPROFILE\.claude\memory\sessions"
+cp commands\*.md "$env:USERPROFILE\.claude\commands\"
+```
+
+Restart Claude Code, then:
+- `/save` at the end of a session. Writes a short session log and updates memory only if something durable came up.
+- `/resume` at the start of the next one. Loads the last 3 logs and the next step.
+- `/memorize` mid-session to pin one fact right now.
+
+Adapted from [lucasrosati/claude-code-memory-setup](https://github.com/lucasrosati/claude-code-memory-setup) (MIT), simplified to use your memory folder instead of an Obsidian vault.
 
 ---
 
